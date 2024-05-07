@@ -22,6 +22,10 @@ func main() {
 }
 
 func transformer(w http.ResponseWriter, r *http.Request) {
+	// CORSを許可する設定を追加
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	
 	if r.Method != "POST" {
 		w.WriteHeader(405)
 		fmt.Fprintf(w, "This method is not allowed")
